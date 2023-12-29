@@ -6,6 +6,8 @@ import { SwitchThemeComponent } from './components/switch-theme/switch-theme.com
 import { SearchBarComponent } from './components/header/components/search-bar/search-bar.component';
 import { EventCardComponent } from './components/event-card/event-card.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { ViewEventComponent } from './components/modals/view-event/view-event.component';
+import { ModalLayoutComponent } from './components/modals/modal-layout/modal-layout.component';
 
 const COMPONENTS = [
   HeaderComponent,
@@ -13,10 +15,11 @@ const COMPONENTS = [
   SearchBarComponent,
   EventCardComponent,
   FooterComponent,
+  ViewEventComponent,
 ];
 const MODULES = [CommonModule];
 @NgModule({
-  declarations: [...COMPONENTS],
+  declarations: [...COMPONENTS, ModalLayoutComponent],
   imports: [...MODULES],
   exports: [...COMPONENTS, ...MODULES],
 })

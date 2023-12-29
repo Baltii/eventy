@@ -4,10 +4,12 @@ import { SigninComponent } from './signin/signin.component';
 import { SignupComponent } from './signup/signup.component';
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { LayoutHomeComponent } from '../layouts/layout-home/layout-home.component';
 
 const routes: Routes = [
   {
     path: '',
+
     children: [
       { path: 'signin', component: SigninComponent },
       { path: 'signup', component: SignupComponent },
