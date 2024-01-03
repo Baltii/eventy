@@ -18,7 +18,8 @@ export class SignupComponent {
 
   constructor(private authService: AuthentificationService) {}
 
-  signup(): void {
+  signup(event: Event): void {
+  event.preventDefault();
     this.resetErrors();
 
     const clubName = this.clubName.nativeElement.value;
@@ -42,11 +43,14 @@ export class SignupComponent {
       this.confirmPasswordError =
         'Password does not match the confirmation password';
     }
-
-    if (!this.hasErrors()) {
-      const club = { clubName, email, password };
+    if (!this.hasErrors) {
+        const club = { clubName, email, password };
+      console.log(club);
       this.authService.signup(club);
     }
+  
+
+    
   }
 
   resetErrors(): void {
