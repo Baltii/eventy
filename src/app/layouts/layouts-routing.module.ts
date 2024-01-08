@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LayoutHomeComponent } from './layout-home/layout-home.component';
 import { LayoutClubComponent } from './layout-club/layout-club.component';
+import { EventPageDetailComponent } from './components/event-page-detail/event-page-detail.component';
 
 const routes: Routes = [
   {
@@ -19,6 +20,10 @@ const routes: Routes = [
           import('./components/all-events/all-events.module').then(
             (m) => m.AllEventsModule
           ),
+      },
+      {
+        path: 'event/:id',
+        component: EventPageDetailComponent,
       },
     ],
   },

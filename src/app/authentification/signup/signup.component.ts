@@ -1,5 +1,8 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import { AuthentificationService } from '../authentification-service';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from '../services/auth.service';
+import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -7,65 +10,45 @@ import { AuthentificationService } from '../authentification-service';
   styleUrls: ['./signup.component.scss'],
 })
 export class SignupComponent {
-  @ViewChild('clubName') clubName!: ElementRef;
-  @ViewChild('email') email!: ElementRef;
-  @ViewChild('password') password!: ElementRef;
-  @ViewChild('confirmPassword') confirmPassword!: ElementRef;
   clubNameError: string = '';
   emailError: string = '';
   passwordError: string = '';
   confirmPasswordError: string = '';
+  clubForm!: FormGroup;
 
-  constructor(private authService: AuthentificationService) {}
-
-  signup(event: Event): void {
-  event.preventDefault();
-    this.resetErrors();
-
-    const clubName = this.clubName.nativeElement.value;
-    const email = this.email.nativeElement.value;
-    const password = this.password.nativeElement.value;
-    const confirmPassword = this.confirmPassword.nativeElement.value;
-
-    if (!clubName) {
-      this.clubNameError = 'Please enter your Club Name';
-    }
-
-    if (!email) {
-      this.emailError = 'Please include a valid email address';
-    }
-
-    if (password.length < 8 || !password) {
-      this.passwordError = 'Password should be at least 8 characters';
-    }
-
-    if (password !== confirmPassword) {
-      this.confirmPasswordError =
-        'Password does not match the confirmation password';
-    }
-    if (!this.hasErrors) {
-        const club = { clubName, email, password };
-      console.log(club);
-      this.authService.signup(club);
-    }
-  
-
-    
+  constructor(
+    private authService: AuthService,
+    private toastr: ToastrService,
+    private router: Router
+  ) {}
+  ngOnInit() {
+    this.initForm();
   }
-
-  resetErrors(): void {
-    this.clubNameError = '';
-    this.emailError = '';
-    this.passwordError = '';
-    this.confirmPasswordError = '';
+  initForm() {
+    this.clubForm = new FormGroup({
+      club_name: new FormControl('', Validators.required),
+      email: new FormControl('', Validators.required),
+      password: new FormControl('', Validators.required),
+      confirm_password: new FormControl('', Validators.required),
+      isAccepted: new FormControl(false, Validators.required),
+    });
   }
-
-  hasErrors(): boolean {
-    return (
-      this.clubNameError !== '' ||
-      this.emailError !== '' ||
-      this.passwordError !== '' ||
-      this.confirmPasswordError !== ''
+  signup(): void {
+    let data = {
+      clubName: this.clubForm.get('club_name')?.value,
+      email: this.clubForm.get('email')?.value,
+      password: this.clubForm.get('password')?.value,
+    };
+    this.authService.signup(data).subscribe(
+      (res) => {
+        this.toastr.success(`Welcome ${data.clubName}!`, 'Toastr fun!');
+        setTimeout(() => {
+          this.router.navigateByUrl('/');
+        }, 3000);
+      },
+      (err) => {
+        this.toastr.error(`Try Again!`);
+      }
     );
   }
 }

@@ -10,35 +10,40 @@ export class AllEventsComponent {
     {
       title: 'Hackathon 2024',
       date: this.getCurrentDate(),
-      description: 'Lorem Ipsum',
+      description:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In in feugiat nunc. Suspendisse aliquet, odio ut tincidunt convallis, neque purus euismod tellus, ut venenatis risus leo sed urna. Vivamus non viverra odio, vel auctor velit. Nam ut mauris maximus, rutrum eros eget, blandit ligula. Etiam tincidunt, libero sed sollicitudin faucibus, odio diam pretium lectus, in faucibus nisl odio at odio. Suspendisse potenti. Vestibulum nec sodales mi. Suspendisse at semper sapien. Fusce in felis quis sapien pellentesque accumsan a in purus. In feugiat tempus pretium. Etiam hendrerit dui ut nulla molestie, quis tincidunt neque faucibus. Praesent bibendum ex rhoncus diam vehicula vulputate. Aliquam massa sapien, efficitur ut ullamcorper semper, viverra quis sem. Vestibulum in faucibus neque.',
       image:
         'https://cdn.socio.events/spai/q_glossy+w_966+to_avif+ret_img/socio.events/wp-content/uploads/2022/10/AdobeStock_503243650-2048x1184.jpeg',
     },
     {
       title: 'Hackathon 2024',
       date: this.getCurrentDate(),
-      description: 'Lorem Ipsum',
+      description:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In in feugiat nunc. Suspendisse aliquet, odio ut tincidunt convallis, neque purus euismod tellus, ut venenatis risus leo sed urna. Vivamus non viverra odio, vel auctor velit. Nam ut mauris maximus, rutrum eros eget, blandit ligula. Etiam tincidunt, libero sed sollicitudin faucibus, odio diam pretium lectus, in faucibus nisl odio at odio. Suspendisse potenti. Vestibulum nec sodales mi. Suspendisse at semper sapien. Fusce in felis quis sapien pellentesque accumsan a in purus. In feugiat tempus pretium. Etiam hendrerit dui ut nulla molestie, quis tincidunt neque faucibus. Praesent bibendum ex rhoncus diam vehicula vulputate. Aliquam massa sapien, efficitur ut ullamcorper semper, viverra quis sem. Vestibulum in faucibus neque.',
       image:
         'https://cdn.socio.events/spai/q_glossy+w_966+to_avif+ret_img/socio.events/wp-content/uploads/2022/10/AdobeStock_503243650-2048x1184.jpeg',
     },
     {
       title: 'Hackathon 2024',
       date: this.getCurrentDate(),
-      description: 'Lorem Ipsum',
+      description:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In in feugiat nunc. Suspendisse aliquet, odio ut tincidunt convallis, neque purus euismod tellus, ut venenatis risus leo sed urna. Vivamus non viverra odio, vel auctor velit. Nam ut mauris maximus, rutrum eros eget, blandit ligula. Etiam tincidunt, libero sed sollicitudin faucibus, odio diam pretium lectus, in faucibus nisl odio at odio. Suspendisse potenti. Vestibulum nec sodales mi. Suspendisse at semper sapien. Fusce in felis quis sapien pellentesque accumsan a in purus. In feugiat tempus pretium. Etiam hendrerit dui ut nulla molestie, quis tincidunt neque faucibus. Praesent bibendum ex rhoncus diam vehicula vulputate. Aliquam massa sapien, efficitur ut ullamcorper semper, viverra quis sem. Vestibulum in faucibus neque.',
       image:
         'https://cdn.socio.events/spai/q_glossy+w_966+to_avif+ret_img/socio.events/wp-content/uploads/2022/10/AdobeStock_503243650-2048x1184.jpeg',
     },
     {
       title: 'Hackathon 2024',
       date: this.getCurrentDate(),
-      description: 'Lorem Ipsum',
+      description:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In in feugiat nunc. Suspendisse aliquet, odio ut tincidunt convallis, neque purus euismod tellus, ut venenatis risus leo sed urna. Vivamus non viverra odio, vel auctor velit. Nam ut mauris maximus, rutrum eros eget, blandit ligula. Etiam tincidunt, libero sed sollicitudin faucibus, odio diam pretium lectus, in faucibus nisl odio at odio. Suspendisse potenti. Vestibulum nec sodales mi. Suspendisse at semper sapien. Fusce in felis quis sapien pellentesque accumsan a in purus. In feugiat tempus pretium. Etiam hendrerit dui ut nulla molestie, quis tincidunt neque faucibus. Praesent bibendum ex rhoncus diam vehicula vulputate. Aliquam massa sapien, efficitur ut ullamcorper semper, viverra quis sem. Vestibulum in faucibus neque.',
       image:
         'https://cdn.socio.events/spai/q_glossy+w_966+to_avif+ret_img/socio.events/wp-content/uploads/2022/10/AdobeStock_503243650-2048x1184.jpeg',
     },
     {
       title: 'Hackathon 2024',
       date: this.getCurrentDate(),
-      description: 'Lorem Ipsum',
+      description:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In in feugiat nunc. Suspendisse aliquet, odio ut tincidunt convallis, neque purus euismod tellus, ut venenatis risus leo sed urna. Vivamus non viverra odio, vel auctor velit. Nam ut mauris maximus, rutrum eros eget, blandit ligula. Etiam tincidunt, libero sed sollicitudin faucibus, odio diam pretium lectus, in faucibus nisl odio at odio. Suspendisse potenti. Vestibulum nec sodales mi. Suspendisse at semper sapien. Fusce in felis quis sapien pellentesque accumsan a in purus. In feugiat tempus pretium. Etiam hendrerit dui ut nulla molestie, quis tincidunt neque faucibus. Praesent bibendum ex rhoncus diam vehicula vulputate. Aliquam massa sapien, efficitur ut ullamcorper semper, viverra quis sem. Vestibulum in faucibus neque.',
       image:
         'https://cdn.socio.events/spai/q_glossy+w_966+to_avif+ret_img/socio.events/wp-content/uploads/2022/10/AdobeStock_503243650-2048x1184.jpeg',
     },

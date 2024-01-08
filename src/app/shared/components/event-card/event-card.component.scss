@@ -1,0 +1,6 @@
+.text-container {
+  height: auto; /* Set the width of your container */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

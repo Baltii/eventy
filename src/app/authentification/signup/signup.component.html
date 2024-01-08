@@ -57,7 +57,7 @@
         </div>-->
 
         <!-- Form -->
-        <form (ngSubmit)="signup($event)">
+        <form [formGroup]="clubForm">
           <div class="grid gap-y-4">
             <!-- Form Group -->
             <div>
@@ -66,137 +66,16 @@
               >
               <div class="relative">
                 <input
-                #clubName
                   type="text"
                   id="club-name"
                   name="club-name"
+                  formControlName="club_name"
                   class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
-                  required
                   aria-describedby="club-name-error"
                 />
                 <div
-                *ngIf="clubNameError"
+                  *ngIf="!this.clubForm.get('club_name')?.valid"
                   class="absolute inset-y-0 end-0 flex items-center pointer-events-none pe-3"
-                >
-                  <svg
-                    class="h-5 w-5 text-red-500"
-                    width="16"
-                    height="16"
-                    fill="currentColor"
-                    viewBox="0 0 16 16"
-                    aria-hidden="true"
-                  >
-                    <path
-                      d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"
-                    />
-                  </svg>
-                </div>
-              </div>
-              <p *ngIf="clubNameError"
-              class="text-xs text-red-600 mt-2" id="club-name-error">
-                {{ clubNameError }}
-              </p>
-            </div>
-            <!-- End Form Group -->
-            <!-- Form Group -->
-            <div>
-              <label for="email" class="block text-sm mb-2 dark:text-white"
-                >Email address</label
-              >
-              <div class="relative">
-                <input
-                #email
-                  type="email"
-                  id="email"
-                  name="email"
-                  class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
-                  required
-                  aria-describedby="email-error"
-                />
-                <div
-                *ngIf="emailError"
-                  class="absolute inset-y-0 end-0 flex items-center pointer-events-none pe-3"
-                >
-                  <svg
-                    class="h-5 w-5 text-red-500"
-                    width="16"
-                    height="16"
-                    fill="currentColor"
-                    viewBox="0 0 16 16"
-                    aria-hidden="true"
-                  >
-                    <path
-                      d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"
-                    />
-                  </svg>
-                </div>
-              </div>
-              <p *ngIf="emailError"
-              class="text-xs text-red-600 mt-2" id="email-error">
-                  {{ emailError }}             
-              </p>
-            </div>
-            <!-- End Form Group -->
-
-            <!-- Form Group -->
-            <div>
-              <label for="password" class="block text-sm mb-2 dark:text-white"
-                >Password</label
-              >
-              <div class="relative">
-                <input
-                  #password
-                  type="password"
-                  id="password"
-                  name="password"
-                  class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
-                  required
-                  aria-describedby="password-error"
-                />
-                <div
-                *ngIf="passwordError"
-                  class="absolute inset-y-0 end-0 flex items-center pointer-events-none pe-3"
-                >
-                  <svg
-                    class="h-5 w-5 text-red-500"
-                    width="16"
-                    height="16"
-                    fill="currentColor"
-                    viewBox="0 0 16 16"
-                    aria-hidden="true"
-                  >
-                    <path
-                      d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"
-                    />
-                  </svg>
-                </div>
-              </div>
-              <p *ngIf="passwordError" 
-              class="text-xs text-red-600 mt-2" id="password-error">
-                {{ passwordError }}
-              </p>
-            </div>
-            <!-- End Form Group -->
-
-            <!-- Form Group -->
-            <div>
-              <label
-                for="confirm-password"
-                class="block text-sm mb-2 dark:text-white"
-                >Confirm Password</label
-              >
-              <div class="relative">
-                <input
-                #confirmPassword
-                  type="password"
-                  id="confirm-password"
-                  name="confirm-password"
-                  class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
-                  required
-                  aria-describedby="confirm-password-error"
-                />
-                <div *ngIf="confirmPasswordError"
-                  class=" absolute inset-y-0 end-0 flex items-center pointer-events-none pe-3"
                 >
                   <svg
                     class="h-5 w-5 text-red-500"
@@ -213,11 +92,145 @@
                 </div>
               </div>
               <p
-              *ngIf="confirmPasswordError"
+                *ngIf="!this.clubForm.get('club_name')?.valid"
+                class="text-xs text-red-600 mt-2"
+                id="club-name-error"
+              >
+                Please write a valid club name.
+              </p>
+            </div>
+            <!-- End Form Group -->
+            <!-- Form Group -->
+            <div>
+              <label for="email" class="block text-sm mb-2 dark:text-white"
+                >Email address</label
+              >
+              <div class="relative">
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  formControlName="email"
+                  class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
+                  aria-describedby="email-error"
+                />
+                <div
+                  *ngIf="!this.clubForm.get('email')?.valid"
+                  class="absolute inset-y-0 end-0 flex items-center pointer-events-none pe-3"
+                >
+                  <svg
+                    class="h-5 w-5 text-red-500"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    viewBox="0 0 16 16"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"
+                    />
+                  </svg>
+                </div>
+              </div>
+              <p
+                *ngIf="!this.clubForm.get('email')?.valid"
+                class="text-xs text-red-600 mt-2"
+                id="email-error"
+              >
+                Please write a valide email address
+              </p>
+            </div>
+            <!-- End Form Group -->
+
+            <!-- Form Group -->
+            <div>
+              <label for="password" class="block text-sm mb-2 dark:text-white"
+                >Password</label
+              >
+              <div class="relative">
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  formControlName="password"
+                  class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
+                  aria-describedby="password-error"
+                />
+                <div
+                  *ngIf="!this.clubForm.get('password')?.valid"
+                  class="absolute inset-y-0 end-0 flex items-center pointer-events-none pe-3"
+                >
+                  <svg
+                    class="h-5 w-5 text-red-500"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    viewBox="0 0 16 16"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"
+                    />
+                  </svg>
+                </div>
+              </div>
+              <p
+                *ngIf="!this.clubForm.get('password')?.valid"
+                class="text-xs text-red-600 mt-2"
+                id="password-error"
+              >
+                Please write a valide password
+              </p>
+            </div>
+            <!-- End Form Group -->
+
+            <!-- Form Group -->
+            <div>
+              <label
+                for="confirm-password"
+                class="block text-sm mb-2 dark:text-white"
+                >Confirm Password</label
+              >
+              <div class="relative">
+                <input
+                  type="password"
+                  id="confirm-password"
+                  name="confirm-password"
+                  formControlName="confirm_password"
+                  class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
+                  required
+                  aria-describedby="confirm-password-error"
+                />
+                <div
+                  *ngIf="
+                    this.clubForm.get('confirm_password')?.value !=
+                    this.clubForm.get('password')?.value
+                  "
+                  class="absolute inset-y-0 end-0 flex items-center pointer-events-none pe-3"
+                >
+                  <svg
+                    class="h-5 w-5 text-red-500"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    viewBox="0 0 16 16"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"
+                    />
+                  </svg>
+                </div>
+              </div>
+              <p
+                *ngIf="
+                  this.clubForm.get('confirm_password')?.value !=
+                  this.clubForm.get('password')?.value
+                "
                 class="text-xs text-red-600 mt-2"
                 id="confirm-password-error"
               >
-                {{ confirmPasswordError }}
+                invalide confirm password.
               </p>
             </div>
             <!-- End Form Group -->
@@ -228,6 +241,7 @@
                 <input
                   id="remember-me"
                   name="remember-me"
+                  formControlName="isAccepted"
                   type="checkbox"
                   class="shrink-0 mt-0.5 border-gray-200 rounded text-blue-600 pointer-events-none focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"
                 />
@@ -246,10 +260,11 @@
             <!-- End Checkbox -->
 
             <button
-           (ngSubmit)="signup($event)"
+              (click)="signup()"
+              [disabled]="!this.clubForm.valid"
               type="submit"
               class="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-              >
+            >
               Sign up
             </button>
           </div>
