@@ -27,7 +27,7 @@ export class SignupComponent {
   initForm() {
     this.clubForm = new FormGroup({
       club_name: new FormControl('', Validators.required),
-      email: new FormControl('', Validators.required),
+      email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', Validators.required),
       confirm_password: new FormControl('', Validators.required),
       isAccepted: new FormControl(false, Validators.required),
@@ -43,8 +43,8 @@ export class SignupComponent {
       (res) => {
         this.toastr.success(`Welcome ${data.clubName}!`, 'Toastr fun!');
         setTimeout(() => {
-          this.router.navigateByUrl('/');
-        }, 3000);
+          this.router.navigateByUrl('/authentication/signin');
+        }, 1000);
       },
       (err) => {
         this.toastr.error(`Try Again!`);

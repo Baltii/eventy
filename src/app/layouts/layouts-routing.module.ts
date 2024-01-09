@@ -27,7 +27,17 @@ const routes: Routes = [
       },
     ],
   },
-  { path: 'club', component: LayoutClubComponent },
+  {
+    path: 'club',
+    component: LayoutClubComponent,
+    children: [
+      {
+        path: '',
+        loadChildren: () =>
+          import('../club/club.module').then((m) => m.ClubModule),
+      },
+    ],
+  },
 ];
 
 @NgModule({

@@ -38,7 +38,7 @@ export class SigninComponent implements OnInit {
         this.toastr.success(`Welcome ${data.email}!`, 'Toastr fun!');
         setTimeout(() => {
           this.router.navigateByUrl('/');
-        }, 3000);
+        }, 1000);
       },
       (err) => {
         this.toastr.error(`Try Again!`);
