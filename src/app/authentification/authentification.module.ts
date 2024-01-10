@@ -8,6 +8,7 @@ import { ForgetPasswordComponent } from './forget-password/forget-password.compo
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { SharedModule } from '../shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ActivationAccountComponent } from './activation-account/activation-account.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     SignupComponent,
     ForgetPasswordComponent,
     ResetPasswordComponent,
+    ActivationAccountComponent,
   ],
   imports: [
     CommonModule,

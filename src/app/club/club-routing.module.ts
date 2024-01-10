@@ -6,11 +6,13 @@ import { EventsComponent } from './components/events/events.component';
 import { EditEventComponent } from './components/edit-event/edit-event.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { MembersComponent } from './components/members/members.component';
+import { authGuard } from '../shared/guards/auth.guard';
 
 const routes: Routes = [
   {
     path: '',
     component: ClubComponent,
+    canActivate: [authGuard],
     children: [
       { path: 'events', component: EventsComponent },
       { path: 'events/add', component: AddEventComponent },

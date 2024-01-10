@@ -8,9 +8,10 @@ import { SharedModule } from '../shared/shared.module';
 import { EventPageDetailComponent } from './components/event-page-detail/event-page-detail.component';
 import { SidebarClubComponent } from './layout-club/components/sidebar-club/sidebar-club.component';
 import { HeaderClubComponent } from './layout-club/components/header-club/header-club.component';
+import { LayoutAuthComponent } from './layout-auth/layout-auth.component';
 
 @NgModule({
-  declarations: [LayoutHomeComponent, LayoutClubComponent, EventPageDetailComponent, SidebarClubComponent, HeaderClubComponent],
+  declarations: [LayoutHomeComponent, LayoutClubComponent, EventPageDetailComponent, SidebarClubComponent, HeaderClubComponent, LayoutAuthComponent],
   imports: [CommonModule, LayoutsRoutingModule, SharedModule],
 })
 export class LayoutsModule {}

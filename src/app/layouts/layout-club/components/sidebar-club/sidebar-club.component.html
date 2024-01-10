@@ -87,9 +87,10 @@
     <ul class="space-y-1.5">
       <li>
         <a
-          class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-slate-700 rounded-lg active:text-blue-600 hover:bg-gray-100 dark:bg-gray-900 dark:text-white dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+          class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-slate-700 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-900 dark:text-slate-400 dark:hover:text-slate-300 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
           [ngClass]="{
-            '!text-blue-600 bg-slate-100': isSelected('/club/dashboard')
+            '!text-blue-600 bg-slate-100 dark:bg-gray-900':
+              isSelected('/club/dashboard')
           }"
           [routerLink]="'/club/dashboard'"
           routerLinkActive="active"
@@ -117,7 +118,8 @@
         <a
           class="w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-slate-700 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-900 dark:text-slate-400 dark:hover:text-slate-300 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
           [ngClass]="{
-            '!text-blue-600 bg-slate-100': isSelected('/club/events')
+            '!text-blue-600 bg-slate-100 dark:bg-gray-900':
+              isSelected('/club/events')
           }"
           [routerLink]="'/club/events'"
           routerLinkActive="active"
@@ -151,9 +153,10 @@
 
       <li>
         <a
-          class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-slate-700 rounded-lg hover:bg-gray-100 dark:bg-gray-900 dark:text-white dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+          class="w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-slate-700 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-900 dark:text-slate-400 dark:hover:text-slate-300 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
           [ngClass]="{
-            '!text-blue-600 bg-slate-100': isSelected('/club/members')
+            '!text-blue-600 bg-slate-100 dark:bg-gray-900':
+              isSelected('/club/members')
           }"
           [routerLink]="'/club/members'"
           routerLinkActive="active"

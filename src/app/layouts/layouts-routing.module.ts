@@ -3,8 +3,16 @@ import { RouterModule, Routes } from '@angular/router';
 import { LayoutHomeComponent } from './layout-home/layout-home.component';
 import { LayoutClubComponent } from './layout-club/layout-club.component';
 import { EventPageDetailComponent } from './components/event-page-detail/event-page-detail.component';
+import { authGuard } from '../shared/guards/auth.guard';
 
 const routes: Routes = [
+  {
+    path: 'authentication',
+    loadChildren: () =>
+      import('../authentification/authentification.module').then(
+        (m) => m.AuthentificationModule
+      ),
+  },
   {
     path: '',
     component: LayoutHomeComponent,
@@ -30,6 +38,7 @@ const routes: Routes = [
   {
     path: 'club',
     component: LayoutClubComponent,
+    canActivate: [authGuard],
     children: [
       {
         path: '',

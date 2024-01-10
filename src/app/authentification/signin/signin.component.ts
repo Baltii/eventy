@@ -35,13 +35,21 @@ export class SigninComponent implements OnInit {
     };
     this.authService.signin(data).subscribe(
       (res) => {
-        this.toastr.success(`Welcome ${data.email}!`, 'Toastr fun!');
-        setTimeout(() => {
-          this.router.navigateByUrl('/');
-        }, 1000);
+        sessionStorage.setItem('token', res.token);
+        this.authService.me().subscribe((res) => {
+          console.log(res);
+          this.toastr.success(`Welcome ${data.email}!`, 'Toastr fun!');
+          setTimeout(() => {
+            this.router.navigateByUrl('/');
+          }, 1000);
+        });
       },
       (err) => {
-        this.toastr.error(`Try Again!`);
+        if (err.status == 401) {
+          this.toastr.error(`You need to activate your account first`);
+        } else {
+          this.toastr.error(`Try Again!`);
+        }
       }
     );
   }
