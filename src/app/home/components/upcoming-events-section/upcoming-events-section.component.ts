@@ -1,49 +1,58 @@
-import { Component } from '@angular/core';
+import { DatePipe } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { ClubService } from 'src/app/club/services/club.service';
 
 @Component({
   selector: 'app-upcoming-events-section',
   templateUrl: './upcoming-events-section.component.html',
   styleUrls: ['./upcoming-events-section.component.scss'],
 })
-export class UpcomingEventsSectionComponent {
-  events = [
-    {
-      title: 'Hackathon 2024',
-      date: this.getCurrentDate(),
-      description: 'Lorem Ipsum',
-      image:
-        'https://cdn.socio.events/spai/q_glossy+w_966+to_avif+ret_img/socio.events/wp-content/uploads/2022/10/AdobeStock_503243650-2048x1184.jpeg',
-    },
-    {
-      title: 'Hackathon 2024',
-      date: this.getCurrentDate(),
-      description: 'Lorem Ipsum',
-      image:
-        'https://cdn.socio.events/spai/q_glossy+w_966+to_avif+ret_img/socio.events/wp-content/uploads/2022/10/AdobeStock_503243650-2048x1184.jpeg',
-    },
-    {
-      title: 'Hackathon 2024',
-      date: this.getCurrentDate(),
-      description: 'Lorem Ipsum',
-      image:
-        'https://cdn.socio.events/spai/q_glossy+w_966+to_avif+ret_img/socio.events/wp-content/uploads/2022/10/AdobeStock_503243650-2048x1184.jpeg',
-    },
-    {
-      title: 'Hackathon 2024',
-      date: this.getCurrentDate(),
-      description: 'Lorem Ipsum',
-      image:
-        'https://cdn.socio.events/spai/q_glossy+w_966+to_avif+ret_img/socio.events/wp-content/uploads/2022/10/AdobeStock_503243650-2048x1184.jpeg',
-    },
-    {
-      title: 'Hackathon 2024',
-      date: this.getCurrentDate(),
-      description: 'Lorem Ipsum',
-      image:
-        'https://cdn.socio.events/spai/q_glossy+w_966+to_avif+ret_img/socio.events/wp-content/uploads/2022/10/AdobeStock_503243650-2048x1184.jpeg',
-    },
-  ];
+export class UpcomingEventsSectionComponent implements OnInit {
+  events: any[] = [];
+  constructor(
+    private clubService: ClubService,
+  ) {}
 
+  ngOnInit(): void {
+    this.clubService.getEvents().subscribe((events: any) => {
+      for (let i = 0; i < events.length; i++) { 
+        console.log(events[i]);
+        const originalDate = events[i].date;
+        const datePipe = new DatePipe('en-US'); 
+        const formattedDate = datePipe.transform(
+          originalDate,
+          'yyyy-MM-dd HH:mm'
+        );
+        const event = {
+          id : events[i]._id,
+          title: events[i].title,
+          description: events[i].description,
+          date: formattedDate,
+          location: events[i].location,
+          isPayed:'',
+          price: '',
+          image :''
+        };
+        if (events[i].isPayed === true) {
+          event.isPayed = 'Paid';
+          event.price = events[i].price;
+        } else {
+          event.isPayed = 'Free';
+        }
+        this.clubService.getEventImage(events[i].photo).subscribe((imageData: Blob) => {
+          const reader = new FileReader();
+          reader.readAsDataURL(imageData);
+          reader.onloadend = () => {
+            event.image = reader.result as string;
+          }
+        });
+        this.events.push(event);
+
+      }
+
+    }
+    );
+  }
   getCurrentDate() {
     let currentDate = new Date();
 

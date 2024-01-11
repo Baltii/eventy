@@ -1,54 +1,55 @@
-import { Component } from '@angular/core';
+import { DatePipe } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { ClubService } from 'src/app/club/services/club.service';
 
 @Component({
   selector: 'app-all-events',
   templateUrl: './all-events.component.html',
   styleUrls: ['./all-events.component.scss'],
 })
-export class AllEventsComponent {
-  events = [
-    {
-      title: 'Hackathon 2024',
-      date: this.getCurrentDate(),
-      description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In in feugiat nunc. Suspendisse aliquet, odio ut tincidunt convallis, neque purus euismod tellus, ut venenatis risus leo sed urna. Vivamus non viverra odio, vel auctor velit. Nam ut mauris maximus, rutrum eros eget, blandit ligula. Etiam tincidunt, libero sed sollicitudin faucibus, odio diam pretium lectus, in faucibus nisl odio at odio. Suspendisse potenti. Vestibulum nec sodales mi. Suspendisse at semper sapien. Fusce in felis quis sapien pellentesque accumsan a in purus. In feugiat tempus pretium. Etiam hendrerit dui ut nulla molestie, quis tincidunt neque faucibus. Praesent bibendum ex rhoncus diam vehicula vulputate. Aliquam massa sapien, efficitur ut ullamcorper semper, viverra quis sem. Vestibulum in faucibus neque.',
-      image:
-        'https://cdn.socio.events/spai/q_glossy+w_966+to_avif+ret_img/socio.events/wp-content/uploads/2022/10/AdobeStock_503243650-2048x1184.jpeg',
-    },
-    {
-      title: 'Hackathon 2024',
-      date: this.getCurrentDate(),
-      description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In in feugiat nunc. Suspendisse aliquet, odio ut tincidunt convallis, neque purus euismod tellus, ut venenatis risus leo sed urna. Vivamus non viverra odio, vel auctor velit. Nam ut mauris maximus, rutrum eros eget, blandit ligula. Etiam tincidunt, libero sed sollicitudin faucibus, odio diam pretium lectus, in faucibus nisl odio at odio. Suspendisse potenti. Vestibulum nec sodales mi. Suspendisse at semper sapien. Fusce in felis quis sapien pellentesque accumsan a in purus. In feugiat tempus pretium. Etiam hendrerit dui ut nulla molestie, quis tincidunt neque faucibus. Praesent bibendum ex rhoncus diam vehicula vulputate. Aliquam massa sapien, efficitur ut ullamcorper semper, viverra quis sem. Vestibulum in faucibus neque.',
-      image:
-        'https://cdn.socio.events/spai/q_glossy+w_966+to_avif+ret_img/socio.events/wp-content/uploads/2022/10/AdobeStock_503243650-2048x1184.jpeg',
-    },
-    {
-      title: 'Hackathon 2024',
-      date: this.getCurrentDate(),
-      description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In in feugiat nunc. Suspendisse aliquet, odio ut tincidunt convallis, neque purus euismod tellus, ut venenatis risus leo sed urna. Vivamus non viverra odio, vel auctor velit. Nam ut mauris maximus, rutrum eros eget, blandit ligula. Etiam tincidunt, libero sed sollicitudin faucibus, odio diam pretium lectus, in faucibus nisl odio at odio. Suspendisse potenti. Vestibulum nec sodales mi. Suspendisse at semper sapien. Fusce in felis quis sapien pellentesque accumsan a in purus. In feugiat tempus pretium. Etiam hendrerit dui ut nulla molestie, quis tincidunt neque faucibus. Praesent bibendum ex rhoncus diam vehicula vulputate. Aliquam massa sapien, efficitur ut ullamcorper semper, viverra quis sem. Vestibulum in faucibus neque.',
-      image:
-        'https://cdn.socio.events/spai/q_glossy+w_966+to_avif+ret_img/socio.events/wp-content/uploads/2022/10/AdobeStock_503243650-2048x1184.jpeg',
-    },
-    {
-      title: 'Hackathon 2024',
-      date: this.getCurrentDate(),
-      description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In in feugiat nunc. Suspendisse aliquet, odio ut tincidunt convallis, neque purus euismod tellus, ut venenatis risus leo sed urna. Vivamus non viverra odio, vel auctor velit. Nam ut mauris maximus, rutrum eros eget, blandit ligula. Etiam tincidunt, libero sed sollicitudin faucibus, odio diam pretium lectus, in faucibus nisl odio at odio. Suspendisse potenti. Vestibulum nec sodales mi. Suspendisse at semper sapien. Fusce in felis quis sapien pellentesque accumsan a in purus. In feugiat tempus pretium. Etiam hendrerit dui ut nulla molestie, quis tincidunt neque faucibus. Praesent bibendum ex rhoncus diam vehicula vulputate. Aliquam massa sapien, efficitur ut ullamcorper semper, viverra quis sem. Vestibulum in faucibus neque.',
-      image:
-        'https://cdn.socio.events/spai/q_glossy+w_966+to_avif+ret_img/socio.events/wp-content/uploads/2022/10/AdobeStock_503243650-2048x1184.jpeg',
-    },
-    {
-      title: 'Hackathon 2024',
-      date: this.getCurrentDate(),
-      description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In in feugiat nunc. Suspendisse aliquet, odio ut tincidunt convallis, neque purus euismod tellus, ut venenatis risus leo sed urna. Vivamus non viverra odio, vel auctor velit. Nam ut mauris maximus, rutrum eros eget, blandit ligula. Etiam tincidunt, libero sed sollicitudin faucibus, odio diam pretium lectus, in faucibus nisl odio at odio. Suspendisse potenti. Vestibulum nec sodales mi. Suspendisse at semper sapien. Fusce in felis quis sapien pellentesque accumsan a in purus. In feugiat tempus pretium. Etiam hendrerit dui ut nulla molestie, quis tincidunt neque faucibus. Praesent bibendum ex rhoncus diam vehicula vulputate. Aliquam massa sapien, efficitur ut ullamcorper semper, viverra quis sem. Vestibulum in faucibus neque.',
-      image:
-        'https://cdn.socio.events/spai/q_glossy+w_966+to_avif+ret_img/socio.events/wp-content/uploads/2022/10/AdobeStock_503243650-2048x1184.jpeg',
-    },
-  ];
+export class AllEventsComponent implements OnInit {
+  events: any[] = [];
+  constructor(private clubService: ClubService) {}
 
+  ngOnInit(): void {
+    this.clubService.getEvents().subscribe((events: any) => {
+      for (let i = 0; i < events.length; i++) {
+        console.log(events[i]);
+        const originalDate = events[i].date;
+        const datePipe = new DatePipe('en-US');
+        const formattedDate = datePipe.transform(
+          originalDate,
+          'yyyy-MM-dd HH:mm'
+        );
+        const event = {
+          id: events[i]._id,
+          title: events[i].title,
+          description: events[i].description,
+          date: formattedDate,
+          location: events[i].location,
+          isPayed: '',
+          price: '',
+          image: '',
+        };
+        if (events[i].isPayed === true) {
+          event.isPayed = 'Paid';
+          event.price = events[i].price;
+        } else {
+          event.isPayed = 'Free';
+        }
+        this.clubService
+          .getEventImage(events[i].photo)
+          .subscribe((imageData: Blob) => {
+            const reader = new FileReader();
+            reader.readAsDataURL(imageData);
+            reader.onloadend = () => {
+              event.image = reader.result as string;
+            };
+          });
+        this.events.push(event);
+      }
+    });
+  }
   getCurrentDate() {
     let currentDate = new Date();
 

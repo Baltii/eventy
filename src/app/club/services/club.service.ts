@@ -9,34 +9,38 @@ export class ClubService {
   constructor(private http: HttpClient) {}
 
   getEvents(): Observable<any> {
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${sessionStorage.getItem('token')}`,
-    });
-    return this.http.get(BASE_URL + `events`, { headers });
+    return this.http.get(BASE_URL + `events`);
   }
 
+  /*getTenEvents(): Observable<any> {
+    return this.http.get(BASE_URL + `events/ten`);
+  }*/
+  getEventImage(imageName: string): Observable<any> {
+    return this.http.get(BASE_URL + `events/event/${imageName}`, {
+      responseType: 'blob',
+    });
+  }
   getEventById(id: any): Observable<any> {
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${sessionStorage.getItem('token')}`,
-    });
-    return this.http.get(BASE_URL + `events/${id}`, { headers });
+    return this.http.get(BASE_URL + `events/${id}`);
   }
 
+  getEventByUser(): Observable<any> {
+       const headers = new HttpHeaders({
+         Authorization: `${sessionStorage.getItem('token')}`,
+       });
+    return this.http.get(BASE_URL + `events/myEvent` ,{headers});
+  }
   addEvent(data: any): Observable<any> {
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${sessionStorage.getItem('token')}`,
-    });
+      const headers = new HttpHeaders({
+        Authorization: `${sessionStorage.getItem('token')}`,
+      });
     return this.http.post(BASE_URL + `events/add`, data, { headers });
   }
 
   updateEvent(id: string, event: any, file: any): Observable<any> {
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${sessionStorage.getItem('token')}`,
-    });
+     const headers = new HttpHeaders({
+       Authorization: `${sessionStorage.getItem('token')}`,
+     });
     const formData = new FormData();
 
     // Assuming 'file' is a File object, you can append it to the FormData
@@ -56,10 +60,9 @@ export class ClubService {
   }
 
   deleteEvent(id: any): Observable<any> {
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${sessionStorage.getItem('token')}`,
-    });
+     const headers = new HttpHeaders({
+       Authorization: `${sessionStorage.getItem('token')}`,
+     });
     return this.http.delete(BASE_URL + `events/${id}`, { headers });
   }
 }

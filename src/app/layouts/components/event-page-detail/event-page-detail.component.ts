@@ -1,21 +1,65 @@
-import { Component } from '@angular/core';
+import { DatePipe } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { AuthService } from 'src/app/authentification/services/auth.service';
+import { ClubService } from 'src/app/club/services/club.service';
 
 @Component({
   selector: 'app-event-page-detail',
   templateUrl: './event-page-detail.component.html',
   styleUrls: ['./event-page-detail.component.scss'],
 })
-export class EventPageDetailComponent {
-  data = {
-    title: 'Hackathon 2024',
-    date: this.getCurrentDate(),
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In in feugiat nunc. Suspendisse aliquet, odio ut tincidunt convallis, neque purus euismod tellus, ut venenatis risus leo sed urna. Vivamus non viverra odio, vel auctor velit. Nam ut mauris maximus, rutrum eros eget, blandit ligula. Etiam tincidunt, libero sed sollicitudin faucibus, odio diam pretium lectus, in faucibus nisl odio at odio. Suspendisse potenti. Vestibulum nec sodales mi. Suspendisse at semper sapien. Fusce in felis quis sapien pellentesque accumsan a in purus. In feugiat tempus pretium. Etiam hendrerit dui ut nulla molestie, quis tincidunt neque faucibus. Praesent bibendum ex rhoncus diam vehicula vulputate. Aliquam massa sapien, efficitur ut ullamcorper semper, viverra quis sem. Vestibulum in faucibus neque.',
-    image:
-      'https://cdn.socio.events/spai/q_glossy+w_966+to_avif+ret_img/socio.events/wp-content/uploads/2022/10/AdobeStock_503243650-2048x1184.jpeg',
-  };
+export class EventPageDetailComponent implements OnInit {
+  constructor(
+    private router: Router,
+    private clubService: ClubService,
+    private route: ActivatedRoute
+  ) {}
+  data: any = {};
 
-  getCurrentDate() {
+  ngOnInit(): void {
+    this.route.paramMap.subscribe((params) => {
+      let id = params.get('id');
+      this.clubService.getEventById(id).subscribe(
+        (res) => {
+           const originalDate = res.date;
+           const datePipe = new DatePipe('en-US');
+           const formattedDate = datePipe.transform(
+             originalDate,
+             'yyyy-MM-dd HH:mm'
+           );
+          
+          this.data.title = res.title,
+            this.data.description = res.description;
+            this.data.date = formattedDate;
+            this.data.isPayed = res.isPayed;
+            this.data.location = res.location;
+          
+        
+          if (res.isPayed === true) {
+            this.data.isPayed = 'Paid';
+            this.data.price = res.price;
+          } else {
+            this.data.isPayed = 'Free'
+          }
+          this.clubService
+            .getEventImage(res.photo)
+            .subscribe((imageData: Blob) => {
+              const reader = new FileReader();
+              reader.readAsDataURL(imageData);
+              reader.onloadend = () => {
+                this.data.image = reader.result as string;
+              };
+            });
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
+    });
+  }
+
+  /*getCurrentDate() {
     let currentDate = new Date();
 
     // Get individual components of the date
@@ -28,5 +72,5 @@ export class EventPageDetailComponent {
       .toString()
       .padStart(2, '0')}`;
     return formattedDate;
-  }
+  }*/
 }
