@@ -37,4 +37,13 @@ export class AuthService {
   logout() {
     sessionStorage.clear();
   }
+
+  forgetPassword(data: any): Observable<any> {
+    return this.http.post(BASE_URL + `auth/forgotPassword`, data);
+  }
+
+  resetPassword(token : any ,data :any): Observable<any> {
+   
+    return this.http.post(BASE_URL + `auth/resetPassword/${token}`, data);
+  }
 }

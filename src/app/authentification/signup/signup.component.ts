@@ -44,7 +44,7 @@ export class SignupComponent {
         this.toastr.success(`Welcome ${data.clubName}!`, 'Toastr fun!');
         setTimeout(() => {
           this.router.navigateByUrl('/authentication/signin');
-        }, 1000);
+        }, 500);
       },
       (err) => {
         this.toastr.error(`Try Again!`);
