@@ -25,44 +25,54 @@ export class ClubService {
   }
 
   getEventByUser(): Observable<any> {
-       const headers = new HttpHeaders({
-         Authorization: `${sessionStorage.getItem('token')}`,
-       });
-    return this.http.get(BASE_URL + `events/myEvent` ,{headers});
+    const headers = new HttpHeaders({
+      Authorization: `${sessionStorage.getItem('token')}`,
+    });
+    return this.http.get(BASE_URL + `events/myEvent`, { headers });
   }
-  addEvent(data: any): Observable<any> {
-      const headers = new HttpHeaders({
-        Authorization: `${sessionStorage.getItem('token')}`,
-      });
-    return this.http.post(BASE_URL + `events/add`, data, { headers });
+  addEvent(event: any, file: File): Observable<any> {
+    const formData = new FormData();
+    formData.append('photo', file);
+    formData.append('title', event.title);
+    formData.append('location', event.location);
+    formData.append('description', event.description);
+    formData.append('date', event.date);
+    formData.append('price', event.price);
+    formData.append('isPayed', event.isPayed);
+    formData.append('category', event.category);
+    const headers = new HttpHeaders({
+      Authorization: `${sessionStorage.getItem('token')}`,
+    });
+    return this.http.post(BASE_URL + `events/add`, formData, { headers });
   }
 
   updateEvent(id: string, event: any, file: any): Observable<any> {
-     const headers = new HttpHeaders({
-       Authorization: `${sessionStorage.getItem('token')}`,
-     });
+    const headers = new HttpHeaders({
+      Authorization: `${sessionStorage.getItem('token')}`,
+    });
     const formData = new FormData();
 
     // Assuming 'file' is a File object, you can append it to the FormData
     if (file) {
-      formData.append('file', file);
+      formData.append('photo', file);
+      formData.append('title', event.title);
+      formData.append('location', event.location);
+      formData.append('description', event.description);
+      formData.append('date', event.date);
+      formData.append('price', event.price);
+      formData.append('isPayed', event.isPayed);
+      formData.append('category', event.category);
     }
 
-    // Assuming 'updateEventDto' is the DTO object, you can append its properties to the FormData
-    for (const key in event) {
-      if (event.hasOwnProperty(key)) {
-        formData.append(key, event[key]);
-      }
-    }
     return this.http.patch(BASE_URL + `events/update/${id}`, formData, {
       headers,
     });
   }
 
   deleteEvent(id: any): Observable<any> {
-     const headers = new HttpHeaders({
-       Authorization: `${sessionStorage.getItem('token')}`,
-     });
+    const headers = new HttpHeaders({
+      Authorization: `${sessionStorage.getItem('token')}`,
+    });
     return this.http.delete(BASE_URL + `events/${id}`, { headers });
   }
 }

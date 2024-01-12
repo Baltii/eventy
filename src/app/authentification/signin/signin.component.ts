@@ -38,6 +38,7 @@ export class SigninComponent implements OnInit {
         sessionStorage.setItem('token', res.token);
         this.authService.me().subscribe((res) => {
           console.log(res);
+          sessionStorage.setItem('me', JSON.stringify(res.user));
           this.toastr.success(`Welcome ${data.email}!`, 'Toastr fun!');
           setTimeout(() => {
             this.router.navigateByUrl('/');

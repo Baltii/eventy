@@ -1,98 +1,27 @@
 <!-- Card Section -->
 <div class="max-w-4xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
-  <form>
+  <form [formGroup]="addForm">
     <!-- Card -->
     <div class="bg-white rounded-xl shadow dark:bg-slate-900">
-      <div
-        class="relative h-40 rounded-t-xl bg-[url('https://preline.co/assets/svg/examples/abstract-bg-1.svg')] bg-no-repeat bg-cover bg-center"
-      >
-        <div class="absolute top-0 end-0 p-4">
-          <button
-            type="button"
-            class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-          >
-            <svg
-              class="flex-shrink-0 w-4 h-4"
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-              <polyline points="17 8 12 3 7 8" />
-              <line x1="12" x2="12" y1="3" y2="15" />
-            </svg>
-            Upload header
-          </button>
-        </div>
-      </div>
-
       <div class="pt-0 p-4 sm:pt-0 sm:p-7">
         <!-- Grid -->
         <div class="space-y-4 sm:space-y-6">
-          <div>
-            <label class="sr-only"> Product photo </label>
-
-            <div class="grid sm:flex sm:items-center sm:gap-x-5">
-              <img
-                class="-mt-8 relative z-10 inline-block h-24 w-24 mx-auto sm:mx-0 rounded-full ring-4 ring-white dark:ring-gray-800"
-                src="../assets/img/160x160/img1.jpg"
-                alt="Image Description"
-              />
-
-              <div
-                class="mt-4 sm:mt-auto sm:mb-1.5 flex justify-center sm:justify-start gap-2"
-              >
-                <button
-                  type="button"
-                  class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-                >
-                  <svg
-                    class="flex-shrink-0 w-4 h-4"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                    <polyline points="17 8 12 3 7 8" />
-                    <line x1="12" x2="12" y1="3" y2="15" />
-                  </svg>
-                  Upload logo
-                </button>
-                <button
-                  type="button"
-                  class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-red-500 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-                >
-                  Delete
-                </button>
-              </div>
-            </div>
-          </div>
-
           <div class="space-y-2">
+            <h3 class="text-xl font-bold pt-3">Add Event</h3>
+            <hr class="py-3" />
             <label
               for="af-submit-app-project-name"
               class="inline-block text-sm font-medium text-gray-800 mt-2.5 dark:text-gray-200"
             >
-             Event Title
+              Event Title
             </label>
 
             <input
               id="af-submit-app-project-name"
               type="text"
+              formControlName="title"
               class="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
-              placeholder="Enter project name"
+              placeholder="Event title"
             />
           </div>
 
@@ -105,10 +34,25 @@
             </label>
 
             <input
-              id="af-submit-project-url"
               type="text"
+              formControlName="location"
               class="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
-              placeholder="https://example.so"
+              placeholder="Tunis"
+            />
+          </div>
+          <div class="space-y-2">
+            <label
+              class="inline-block text-sm font-medium text-gray-800 mt-2.5 dark:text-gray-200"
+            >
+              Event Date
+            </label>
+
+            <input
+              type="date"
+              formControlName="date"
+              class="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
+              placeholder="yyyy-mm-dd"
+              [min]="minDate"
             />
           </div>
 
@@ -128,6 +72,7 @@
                 id="af-submit-app-upload-images"
                 name="af-submit-app-upload-images"
                 type="file"
+                (change)="onFileSelected($event)"
                 class="sr-only"
               />
               <svg
@@ -168,28 +113,74 @@
 
             <select
               id="af-submit-app-category"
+              formControlName="category"
               class="py-2 px-3 pe-9 block w-full border-gray-200 shadow-sm rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
             >
-              <option selected>Select a category</option>
-              <option>Ecommerce</option>
-              <option>Finance</option>
-              <option>Marketplace</option>
-              <option>Social</option>
-              <option>Others</option>
+              <option selected disabled value="default">
+                Select a category
+              </option>
+              <option value="ecommerce">Ecommerce</option>
+              <option value="finance">Finance</option>
+              <option value="informatique">Information</option>
+              <option value="social">Social</option>
+              <option value="others">Others</option>
             </select>
           </div>
-
+          <div class="space-y-2">
+            <label
+              for="af-submit-app-description"
+              class="block text-sm font-medium text-gray-800 mt-2.5 dark:text-gray-200"
+            >
+              Price
+            </label>
+            <input
+              type="checkbox"
+              id="hs-basic-usage"
+              formControlName="isPayed"
+              [checked]="this.addForm.get('isPayed').value"
+              class="relative w-[3.25rem] h-7 p-px bg-gray-100 border-transparent text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-blue-600 disabled:opacity-50 disabled:pointer-events-none checked:bg-none checked:text-blue-600 checked:border-blue-600 focus:checked:border-blue-600 dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-600 before:inline-block before:w-6 before:h-6 before:bg-white checked:before:bg-blue-200 before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-gray-400 dark:checked:before:bg-blue-200"
+            />
+            <label for="hs-basic-usage" class="sr-only">switch</label>
+            <label
+              for="af-submit-app-description"
+              class="inline-block text-sm ml-2 font-medium text-gray-800 mt-2.5 dark:text-gray-200"
+            >
+              FREE ?
+            </label>
+            <div
+              class="relative"
+              *ngIf="this.addForm.get('isPayed').value == false"
+            >
+              <input
+                type="text"
+                formControlName="price"
+                name="hs-input-with-leading-and-trailing-icon"
+                class="py-3 my-3 px-4 ps-9 pe-16 block w-full border-gray-200 shadow-sm rounded-lg text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
+                placeholder="0.00"
+              />
+              <div
+                class="absolute inset-y-0 start-0 flex items-center pointer-events-none z-20 ps-4"
+              >
+                <span class="text-gray-500"></span>
+              </div>
+              <div
+                class="absolute inset-y-0 end-0 flex items-center pointer-events-none z-20 pe-4"
+              >
+                <span class="text-gray-500">TND</span>
+              </div>
+            </div>
+          </div>
           <div class="space-y-2">
             <label
               for="af-submit-app-description"
               class="inline-block text-sm font-medium text-gray-800 mt-2.5 dark:text-gray-200"
             >
-             Event Description
-
+              Event Description
             </label>
 
             <textarea
               id="af-submit-app-description"
+              formControlName="description"
               class="py-2 px-3 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
               rows="6"
               placeholder="A detailed summary will better explain your products to the audiences. Our users will see this in your dedicated product page."
@@ -201,9 +192,11 @@
         <div class="mt-5 flex justify-center gap-x-2">
           <button
             type="button"
+            [disabled]="!this.addForm.valid"
+            (click)="addEvent()"
             class="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
           >
-            Submit your project
+            Add Event
           </button>
         </div>
       </div>

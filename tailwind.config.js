@@ -5,5 +5,9 @@ module.exports = {
   theme: {
     extend: {},
   },
-  plugins: [require("preline/plugin"), require("@tailwindcss/aspect-ratio")],
+  plugins: [
+    require("preline/plugin"),
+    require("@tailwindcss/aspect-ratio"),
+    require("@tailwindcss/forms"),
+  ],
 };

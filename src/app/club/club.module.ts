@@ -8,9 +8,17 @@ import { EditEventComponent } from './components/edit-event/edit-event.component
 import { EventsComponent } from './components/events/events.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { MembersComponent } from './components/members/members.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [ClubComponent, AddEventComponent, EditEventComponent, EventsComponent, DashboardComponent, MembersComponent],
-  imports: [CommonModule, ClubRoutingModule],
+  declarations: [
+    ClubComponent,
+    AddEventComponent,
+    EditEventComponent,
+    EventsComponent,
+    DashboardComponent,
+    MembersComponent,
+  ],
+  imports: [CommonModule, ClubRoutingModule, ReactiveFormsModule],
 })
 export class ClubModule {}
