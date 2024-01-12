@@ -8,6 +8,9 @@ import { EventCardComponent } from './components/event-card/event-card.component
 import { FooterComponent } from './components/footer/footer.component';
 import { ViewEventComponent } from './components/modals/view-event/view-event.component';
 import { ModalLayoutComponent } from './components/modals/modal-layout/modal-layout.component';
+import { ParticipateEventComponent } from './components/modals/participate-event/participate-event.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { LoadingComponent } from './components/loading/loading.component';
 
 const COMPONENTS = [
   HeaderComponent,
@@ -16,10 +19,13 @@ const COMPONENTS = [
   EventCardComponent,
   FooterComponent,
   ViewEventComponent,
+  ModalLayoutComponent,
+  ParticipateEventComponent,
+  LoadingComponent,
 ];
-const MODULES = [CommonModule];
+const MODULES = [CommonModule, ReactiveFormsModule];
 @NgModule({
-  declarations: [...COMPONENTS, ModalLayoutComponent],
+  declarations: [...COMPONENTS],
   imports: [...MODULES],
   exports: [...COMPONENTS, ...MODULES],
 })

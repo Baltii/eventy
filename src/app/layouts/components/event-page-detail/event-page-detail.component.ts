@@ -1,8 +1,10 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AuthService } from 'src/app/authentification/services/auth.service';
 import { ClubService } from 'src/app/club/services/club.service';
+import { ParticipateEventComponent } from 'src/app/shared/components/modals/participate-event/participate-event.component';
 
 @Component({
   selector: 'app-event-page-detail',
@@ -13,34 +15,35 @@ export class EventPageDetailComponent implements OnInit {
   constructor(
     private router: Router,
     private clubService: ClubService,
+    private modal: NgbModal,
     private route: ActivatedRoute
   ) {}
   data: any = {};
+  eventId: any;
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
-      let id = params.get('id');
-      this.clubService.getEventById(id).subscribe(
+      this.eventId = params.get('id');
+      this.clubService.getEventById(this.eventId).subscribe(
         (res) => {
-           const originalDate = res.date;
-           const datePipe = new DatePipe('en-US');
-           const formattedDate = datePipe.transform(
-             originalDate,
-             'yyyy-MM-dd HH:mm'
-           );
-          
-          this.data.title = res.title,
-            this.data.description = res.description;
-            this.data.date = formattedDate;
-            this.data.isPayed = res.isPayed;
-            this.data.location = res.location;
-          
-        
+          const originalDate = res.date;
+          const datePipe = new DatePipe('en-US');
+          const formattedDate = datePipe.transform(
+            originalDate,
+            'yyyy-MM-dd HH:mm'
+          );
+
+          (this.data.title = res.title),
+            (this.data.description = res.description);
+          this.data.date = formattedDate;
+          this.data.isPayed = res.isPayed;
+          this.data.location = res.location;
+
           if (res.isPayed === true) {
             this.data.isPayed = 'Paid';
             this.data.price = res.price;
           } else {
-            this.data.isPayed = 'Free'
+            this.data.isPayed = 'Free';
           }
           this.clubService
             .getEventImage(res.photo)
@@ -57,6 +60,17 @@ export class EventPageDetailComponent implements OnInit {
         }
       );
     });
+  }
+
+  openModal() {
+    const modalRef = this.modal.open(ParticipateEventComponent, {
+      size: 'md',
+      keyboard: false,
+      backdrop: 'static',
+      centered: true,
+    });
+    modalRef.componentInstance.title = 'Event Participation';
+    modalRef.componentInstance.id = this.eventId;
   }
 
   /*getCurrentDate() {

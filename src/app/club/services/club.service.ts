@@ -75,4 +75,8 @@ export class ClubService {
     });
     return this.http.delete(BASE_URL + `events/${id}`, { headers });
   }
+
+  eventParticipation(data: any): Observable<any> {
+    return this.http.post(BASE_URL + `participants`, data);
+  }
 }

@@ -8,12 +8,12 @@
       alt="Image Description"
     />
   </div>
-  <div class="p-6">
-    <div class="flex flex-row justify-between">
+  <div class="p-6 w-full">
+    <div class="flex flex-row justify-between w-full">
       <p class="text-3xl font-semibold">{{ data.title }}</p>
       <a
-        href="#"
-        class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900"
+        (click)="openModal()"
+        class="inline-flex justify-center items-center hover:cursor-pointer py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900"
       >
         Participate
         <svg

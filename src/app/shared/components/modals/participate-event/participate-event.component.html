@@ -1,0 +1,103 @@
+<app-modal-layout [title]="title">
+  <div
+    class="text-start overflow-y-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-gray-300 dark:[&::-webkit-scrollbar-track]:bg-slate-700 dark:[&::-webkit-scrollbar-thumb]:bg-slate-500"
+  >
+    <!-- Hire Us -->
+
+    <div class="px-12 py-6 mb-3">
+      <!-- Form -->
+      <form [formGroup]="participateForm">
+        <div class="grid gap-4 lg:gap-6">
+          <!-- Grid -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-6">
+            <div>
+              <label
+                for="hs-firstname-hire-us-2"
+                class="block mb-2 text-sm text-gray-700 font-medium dark:text-white"
+                >First Name</label
+              >
+              <input
+                type="text"
+                formControlName="firstname"
+                class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
+              />
+            </div>
+
+            <div>
+              <label
+                for="hs-lastname-hire-us-2"
+                class="block mb-2 text-sm text-gray-700 font-medium dark:text-white"
+                >Last Name</label
+              >
+              <input
+                type="text"
+                formControlName="lastname"
+                class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
+              />
+            </div>
+          </div>
+          <!-- End Grid -->
+
+          <!-- Grid -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-6">
+            <div>
+              <label
+                for="hs-work-email-hire-us-2"
+                class="block mb-2 text-sm text-gray-700 font-medium dark:text-white"
+                >Email</label
+              >
+              <input
+                type="email"
+                formControlName="email"
+                autocomplete="email"
+                placeholder="example@gmail.com"
+                class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
+              />
+            </div>
+            <div>
+              <label
+                for="hs-inline-add-on"
+                class="block text-sm font-medium mb-2 dark:text-white"
+                >Phone N°</label
+              >
+              <div class="relative">
+                <input
+                  type="text"
+                  formControlName="phone"
+                  class="py-3 px-4 ps-16 block w-full border-gray-200 shadow-sm rounded-lg text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
+                  placeholder="www.example.com"
+                />
+                <div
+                  class="absolute inset-y-0 start-0 flex items-center pointer-events-none z-20 ps-4"
+                >
+                  <span class="text-sm text-gray-500">(+216)</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- End Grid -->
+
+          <div class="mt-6 grid">
+            <button
+              (click)="participate()"
+              [disabled]="isLoading == true || !this.participateForm.valid"
+              type="submit"
+              class="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+            >
+              <app-loading [isLoading]="isLoading"></app-loading>
+              Participate
+            </button>
+          </div>
+
+          <div class="mt-3 text-center">
+            <p class="text-sm text-gray-500">
+              After submiting to this event, you need to wait the acceptation
+              from administration de confirm your participation.
+            </p>
+          </div>
+        </div>
+      </form>
+      <!-- End Form -->
+    </div>
+  </div>
+</app-modal-layout>
