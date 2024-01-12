@@ -11,6 +11,7 @@ import { ModalLayoutComponent } from './components/modals/modal-layout/modal-lay
 import { ParticipateEventComponent } from './components/modals/participate-event/participate-event.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoadingComponent } from './components/loading/loading.component';
+import { ConfirmParticipationComponent } from './components/confirm-participation/confirm-participation.component';
 
 const COMPONENTS = [
   HeaderComponent,
@@ -22,6 +23,7 @@ const COMPONENTS = [
   ModalLayoutComponent,
   ParticipateEventComponent,
   LoadingComponent,
+  ConfirmParticipationComponent,
 ];
 const MODULES = [CommonModule, ReactiveFormsModule];
 @NgModule({

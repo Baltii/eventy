@@ -4,6 +4,7 @@ import { LayoutHomeComponent } from './layout-home/layout-home.component';
 import { LayoutClubComponent } from './layout-club/layout-club.component';
 import { EventPageDetailComponent } from './components/event-page-detail/event-page-detail.component';
 import { authGuard } from '../shared/guards/auth.guard';
+import { ConfirmParticipationComponent } from '../shared/components/confirm-participation/confirm-participation.component';
 
 const routes: Routes = [
   {
@@ -32,6 +33,10 @@ const routes: Routes = [
       {
         path: 'event/:id',
         component: EventPageDetailComponent,
+      },
+      {
+        path: 'participants/confirmation/:token',
+        component: ConfirmParticipationComponent,
       },
     ],
   },

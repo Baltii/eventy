@@ -75,10 +75,7 @@
                   </label>
                 </th>
 
-                <th
-                  scope="col"
-                  class="ps-6 py-3 text-start"
-                >
+                <th scope="col" class="ps-6 py-3 text-start">
                   <div class="flex items-center gap-x-2">
                     <span
                       class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200"
@@ -129,12 +126,13 @@
                 </th>
                 <th scope="col" class="px-6 py-3 text-start">
                   <div class="flex items-center gap-x-2">
-                    <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200">
+                    <span
+                      class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200"
+                    >
                       price
                     </span>
                   </div>
                 </th>
-                
 
                 <th scope="col" class="px-6 py-3 text-end"></th>
               </tr>
@@ -167,32 +165,32 @@
                           class="block text-sm font-semibold text-gray-800 dark:text-gray-200"
                           >{{ event.title }}</span
                         >
-                       
                       </div>
                     </div>
                   </div>
                 </td>
                 <td class="h-px w-72 whitespace-nowrap">
                   <div class="px-6 py-3">
-                   
-                    <span class="block text-sm text-gray-500 text-container "
-                      > {{ event.description }}</span
+                    <span class="block text-sm text-gray-500 text-container">
+                      {{ event.description }}</span
                     >
                   </div>
                 </td>
                 <td class="h-px w-px whitespace-nowrap">
                   <div class="px-6 py-3">
                     <span
-                      class="py-1 px-1.5 inline-flex items-center gap-x-1 text-xs font-medium "
+                      class="py-1 px-1.5 inline-flex items-center gap-x-1 text-xs font-medium"
                     >
-                      {{ event.location}}
+                      {{ event.location }}
                     </span>
                   </div>
                 </td>
                 <td class="h-px w-px whitespace-nowrap">
                   <div class="px-6 py-3">
                     <div class="flex items-center gap-x-3">
-                      <span class="text-xs text-gray-500">{{ event.date}}</span>
+                      <span class="text-xs text-gray-500">{{
+                        event.date
+                      }}</span>
                       <div
                         class="flex w-full h-1.5 bg-gray-200 rounded-full overflow-hidden dark:bg-gray-700"
                       >
@@ -210,27 +208,29 @@
                 </td>
                 <td class="h-px w-px whitespace-nowrap">
                   <div class="px-6 py-3">
-                    <span class="text-sm text-gray-500">{{ event.isPayed}}</span>
+                    <span class="text-sm text-gray-500">{{
+                      event.isPayed
+                    }}</span>
                   </div>
                 </td>
                 <td class="h-px w-px whitespace-nowrap">
                   <div class="px-6 py-3">
-                    <span class="text-sm text-gray-500">{{ event.price}} DT</span>
+                    <span class="text-sm text-gray-500"
+                      >{{ event.price }} DT</span
+                    >
                   </div>
                 </td>
                 <td class="h-px w-px whitespace-nowrap">
                   <div class="px-6 py-1.5">
                     <a
-                      class="inline-flex items-center gap-x-1 text-sm text-blue-600 decoration-2 hover:underline font-medium dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-                      href="#"
+                      class="inline-flex items-center gap-x-1 text-sm hover:cursor-pointer text-blue-600 decoration-2 hover:underline font-medium dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+                      (click)="openEditModal(event)"
                     >
                       Edit
                     </a>
                   </div>
                 </td>
               </tr>
-
-             
             </tbody>
           </table>
           <!-- End Table -->
@@ -241,9 +241,9 @@
           >
             <div>
               <p class="text-sm text-gray-600 dark:text-gray-400">
-                <span class="font-semibold text-gray-800 dark:text-gray-200"
-                  >{{ dataLength}}</span
-                >
+                <span class="font-semibold text-gray-800 dark:text-gray-200">{{
+                  dataLength
+                }}</span>
                 results
               </p>
             </div>

@@ -79,4 +79,7 @@ export class ClubService {
   eventParticipation(data: any): Observable<any> {
     return this.http.post(BASE_URL + `participants`, data);
   }
+  confirmParticipation(token: any): Observable<any> {
+    return this.http.get(BASE_URL + `participants/confirmation/${token}`);
+  }
 }
