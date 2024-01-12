@@ -30,6 +30,8 @@ export class AllEventsComponent implements OnInit {
           isPayed: '',
           price: '',
           image: '',
+          clubName: events[i].clubName,
+          category: events[i].category,
         };
         if (events[i].isPayed === true) {
           event.isPayed = 'Paid';

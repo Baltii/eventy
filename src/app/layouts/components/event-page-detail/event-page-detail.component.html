@@ -9,7 +9,13 @@
     />
   </div>
   <div class="p-6 w-full">
+     <h3
+      class="text-l font-semibold text-gray-800 dark:text-gray-300 dark:hover:text-white"
+    >
+     Club : {{ data.clubName}}
+    </h3>
     <div class="flex flex-row justify-between w-full">
+       
       <p class="text-3xl font-semibold">{{ data.title }}</p>
       <a
         (click)="openModal()"
@@ -32,6 +38,10 @@
     </div>
 
     <p class="mb-5">{{ data.date }}</p>
+        <p class="mb-5">Category : {{ data.category }}</p>
+        <p class="mb-5">Location : {{ data.location }}</p>
+
+
     <p class="text-justify opacity-70">{{ data.description }}</p>
   </div>
 </div>

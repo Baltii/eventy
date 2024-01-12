@@ -31,7 +31,10 @@ export class UpcomingEventsSectionComponent implements OnInit {
           location: events[i].location,
           isPayed:'',
           price: '',
-          image :''
+          image: '',
+          clubName: events[i].clubName,
+          category : events[i].category,
+
         };
         if (events[i].isPayed === true) {
           event.isPayed = 'Paid';

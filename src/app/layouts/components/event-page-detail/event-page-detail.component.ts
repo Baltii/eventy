@@ -38,6 +38,8 @@ export class EventPageDetailComponent implements OnInit {
           this.data.date = formattedDate;
           this.data.isPayed = res.isPayed;
           this.data.location = res.location;
+          this.data.clubName = res.clubName;
+          this.data.category = res.category;
 
           if (res.isPayed === true) {
             this.data.isPayed = 'Paid';
