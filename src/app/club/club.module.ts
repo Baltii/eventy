@@ -9,6 +9,7 @@ import { EventsComponent } from './components/events/events.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { MembersComponent } from './components/members/members.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,6 @@ import { ReactiveFormsModule } from '@angular/forms';
     DashboardComponent,
     MembersComponent,
   ],
-  imports: [CommonModule, ClubRoutingModule, ReactiveFormsModule],
+  imports: [CommonModule, ClubRoutingModule, ReactiveFormsModule, SharedModule],
 })
 export class ClubModule {}

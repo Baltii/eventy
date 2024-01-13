@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ClubService } from '../../services/club.service';
 import { DatePipe } from '@angular/common';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { EditEventComponent } from '../edit-event/edit-event.component';
 
 @Component({
   selector: 'app-events',
@@ -8,7 +10,10 @@ import { DatePipe } from '@angular/common';
   styleUrls: ['./events.component.scss'],
 })
 export class EventsComponent implements OnInit {
-  constructor(private clubService: ClubService) {}
+  constructor(
+    private clubService: ClubService,
+    private modalService: NgbModal
+  ) {}
   events: any[] = [];
   dataLength!: number;
 
@@ -51,5 +56,15 @@ export class EventsComponent implements OnInit {
         this.events.push(event);
       }
     });
+  }
+
+  openEditModal(data: any) {
+    const modalRef = this.modalService.open(EditEventComponent, {
+      size: 'xl',
+      backdrop: 'static',
+      keyboard: false,
+      centered: true,
+    });
+    modalRef.componentInstance.data = data;
   }
 }
