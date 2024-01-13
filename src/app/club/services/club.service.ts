@@ -43,7 +43,7 @@ export class ClubService {
     return this.http.post(BASE_URL + `events/add`, formData, { headers });
   }
 
-  updateEvent(id: string, event: any, file: any): Observable<any> {
+  updateEvent(id: string, event: any, file?: any): Observable<any> {
     const headers = new HttpHeaders({
       Authorization: `${sessionStorage.getItem('token')}`,
     });
@@ -52,16 +52,38 @@ export class ClubService {
     // Assuming 'file' is a File object, you can append it to the FormData
     if (file) {
       formData.append('photo', file);
+    }
+
+    // Compare existing values with new values before appending to FormData
+    if (event.title) {
       formData.append('title', event.title);
+    }
+
+    if (event.location) {
       formData.append('location', event.location);
+    }
+
+    if (event.description) {
       formData.append('description', event.description);
+    }
+
+    if (event.date) {
       formData.append('date', event.date);
+    }
+
+    if (event.price) {
       formData.append('price', event.price);
+    }
+
+    if (event.isPayed !== undefined) {
       formData.append('isPayed', event.isPayed);
+    }
+
+    if (event.category) {
       formData.append('category', event.category);
     }
 
-    return this.http.patch(BASE_URL + `events/update/${id}`, formData, {
+    return this.http.patch(BASE_URL + `events/${id}`, formData, {
       headers,
     });
   }

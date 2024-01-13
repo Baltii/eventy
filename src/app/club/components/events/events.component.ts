@@ -46,7 +46,7 @@ export class EventsComponent implements OnInit {
           clubName: events[i].clubName,
           category: events[i].category,
         };
-        if (events[i].isPayed === true) {
+        if (events[i].isPayed == false) {
           event.isPayed = 'Paid';
           event.price = events[i].price;
         } else {

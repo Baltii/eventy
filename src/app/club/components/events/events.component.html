@@ -165,7 +165,11 @@
                     <div class="flex items-center gap-x-3">
                       <img
                         class="inline-block h-[2.375rem] w-[2.375rem] rounded-full"
-                        [src]="event.image"
+                        [src]="
+                          event.image
+                            ? event.image
+                            : 'https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png'
+                        "
                         alt="Image Description"
                       />
                       <div class="grow">
@@ -213,7 +217,7 @@
                 <td class="h-px w-px whitespace-nowrap">
                   <div class="px-6 py-3">
                     <span class="text-sm text-gray-500">{{
-                      event.isPayed == true ? "Paid" : "Free"
+                      event.isPayed
                     }}</span>
                   </div>
                 </td>
@@ -221,7 +225,7 @@
                   <div class="px-6 py-3">
                     <span
                       class="text-sm text-gray-500"
-                      *ngIf="event.isPayed == true"
+                      *ngIf="event.isPayed == 'Paid'"
                       >{{ event.price }} DT</span
                     >
                   </div>

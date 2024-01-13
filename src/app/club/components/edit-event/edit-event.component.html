@@ -101,7 +101,13 @@
                 <span class="mt-1 block text-xs text-gray-500">
                   Maximum file size is 2 MB
                 </span>
-                <img [src]="selectedFile" />
+                <img
+                  [src]="
+                    this.selectedFile
+                      ? this.selectedFile
+                      : 'https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png'
+                  "
+                />
               </label>
             </div>
 
