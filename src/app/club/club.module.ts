@@ -10,6 +10,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { MembersComponent } from './components/members/members.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
+import { AdminEventDetailComponent } from './components/admin-event-detail/admin-event-detail.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { SharedModule } from '../shared/shared.module';
     EventsComponent,
     DashboardComponent,
     MembersComponent,
+    AdminEventDetailComponent,
   ],
   imports: [CommonModule, ClubRoutingModule, ReactiveFormsModule, SharedModule],
 })

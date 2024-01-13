@@ -7,6 +7,7 @@ import { EditEventComponent } from './components/edit-event/edit-event.component
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { MembersComponent } from './components/members/members.component';
 import { authGuard } from '../shared/guards/auth.guard';
+import { AdminEventDetailComponent } from './components/admin-event-detail/admin-event-detail.component';
 
 const routes: Routes = [
   {
@@ -16,7 +17,7 @@ const routes: Routes = [
     children: [
       { path: 'events', component: EventsComponent },
       { path: 'events/add', component: AddEventComponent },
-      { path: 'events/:id/edit', component: EditEventComponent },
+      { path: 'events/:id', component: AdminEventDetailComponent },
       { path: 'dashboard', component: DashboardComponent },
       { path: 'members', component: MembersComponent },
     ],

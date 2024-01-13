@@ -3,6 +3,9 @@ import { ClubService } from '../../services/club.service';
 import { DatePipe } from '@angular/common';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { EditEventComponent } from '../edit-event/edit-event.component';
+import { ToastrService } from 'ngx-toastr';
+import { DeleteConfirmationComponent } from 'src/app/shared/components/modals/delete-confirmation/delete-confirmation.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-events',
@@ -12,7 +15,10 @@ import { EditEventComponent } from '../edit-event/edit-event.component';
 export class EventsComponent implements OnInit {
   constructor(
     private clubService: ClubService,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private eventService: ClubService,
+    private toastr: ToastrService,
+    private router: Router
   ) {}
   events: any[] = [];
   dataLength!: number;
@@ -37,6 +43,8 @@ export class EventsComponent implements OnInit {
           isPayed: '',
           price: '',
           image: '',
+          clubName: events[i].clubName,
+          category: events[i].category,
         };
         if (events[i].isPayed === true) {
           event.isPayed = 'Paid';
@@ -58,13 +66,26 @@ export class EventsComponent implements OnInit {
     });
   }
 
+  openDetail(id: any) {
+    this.router.navigateByUrl(`club/events/${id}`);
+  }
+
   openEditModal(data: any) {
     const modalRef = this.modalService.open(EditEventComponent, {
       size: 'xl',
       backdrop: 'static',
-      keyboard: false,
       centered: true,
     });
     modalRef.componentInstance.data = data;
+  }
+
+  DeleteEvent(id: any) {
+    const modalRef = this.modalService.open(DeleteConfirmationComponent, {
+      size: 'md',
+      keyboard: false,
+      centered: true,
+      backdrop: 'static',
+    });
+    modalRef.componentInstance.id = id;
   }
 }

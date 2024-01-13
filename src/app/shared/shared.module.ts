@@ -12,6 +12,7 @@ import { ParticipateEventComponent } from './components/modals/participate-event
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoadingComponent } from './components/loading/loading.component';
 import { ConfirmParticipationComponent } from './components/confirm-participation/confirm-participation.component';
+import { DeleteConfirmationComponent } from './components/modals/delete-confirmation/delete-confirmation.component';
 
 const COMPONENTS = [
   HeaderComponent,
@@ -24,6 +25,7 @@ const COMPONENTS = [
   ParticipateEventComponent,
   LoadingComponent,
   ConfirmParticipationComponent,
+  DeleteConfirmationComponent,
 ];
 const MODULES = [CommonModule, ReactiveFormsModule];
 @NgModule({
