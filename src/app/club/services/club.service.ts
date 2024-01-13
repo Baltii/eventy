@@ -12,7 +12,6 @@ export class ClubService {
     return this.http.get(BASE_URL + `events`);
   }
 
-  
   getEventImage(imageName: string): Observable<any> {
     return this.http.get(BASE_URL + `events/event/${imageName}`, {
       responseType: 'blob',
@@ -74,6 +73,12 @@ export class ClubService {
     return this.http.delete(BASE_URL + `events/${id}`, { headers });
   }
 
+  getParticipationByEvent(id: any): Observable<any> {
+    const headers = new HttpHeaders({
+      Authorization: `${sessionStorage.getItem('token')}`,
+    });
+    return this.http.get(BASE_URL + `participants/${id}`, { headers });
+  }
   eventParticipation(data: any): Observable<any> {
     return this.http.post(BASE_URL + `participants`, data);
   }

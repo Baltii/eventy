@@ -1,1 +1,195 @@
-<p>admin-event-detail works!</p>
+<!-- Card Section -->
+<div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+  <h3 class="font-bold text-2xl py-5 text-slate-900 dark:text-slate-200">
+    Participats Analyse
+  </h3>
+  <!-- Grid -->
+  <div class="grid pb-20 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+    <!-- Card -->
+    <div
+      class="flex flex-col gap-y-3 lg:gap-y-5 p-4 md:p-5 bg-white border shadow-sm rounded-xl dark:bg-slate-900 dark:border-gray-800"
+    >
+      <div class="inline-flex justify-center items-center">
+        <span class="w-2 h-2 inline-block bg-gray-500 rounded-full me-2"></span>
+        <span
+          class="text-xs font-semibold uppercase text-gray-600 dark:text-gray-400"
+          >All Participats</span
+        >
+      </div>
+
+      <div class="text-center">
+        <h3
+          class="text-3xl sm:text-4xl lg:text-5xl font-semibold text-gray-800 dark:text-gray-200"
+        >
+          {{ allParticipats.length }}
+        </h3>
+      </div>
+    </div>
+    <!-- End Card -->
+
+    <!-- Card -->
+    <div
+      class="flex flex-col gap-y-3 lg:gap-y-5 p-4 md:p-5 bg-white border shadow-sm rounded-xl dark:bg-slate-900 dark:border-gray-800"
+    >
+      <div class="inline-flex justify-center items-center">
+        <span
+          class="w-2 h-2 inline-block bg-green-500 rounded-full me-2"
+        ></span>
+        <span
+          class="text-xs font-semibold uppercase text-gray-600 dark:text-gray-400"
+          >Confirmed Participats</span
+        >
+      </div>
+
+      <div class="text-center">
+        <h3
+          class="text-3xl sm:text-4xl lg:text-5xl font-semibold text-gray-800 dark:text-gray-200"
+        >
+          {{ confirmedParticipats.length }}
+        </h3>
+      </div>
+    </div>
+    <!-- End Card -->
+
+    <!-- Card -->
+    <div
+      class="flex flex-col gap-y-3 lg:gap-y-5 p-4 md:p-5 bg-white border shadow-sm rounded-xl dark:bg-slate-900 dark:border-gray-800"
+    >
+      <div class="inline-flex justify-center items-center">
+        <span class="w-2 h-2 inline-block bg-red-500 rounded-full me-2"></span>
+        <span
+          class="text-xs font-semibold uppercase text-gray-600 dark:text-gray-400"
+          >Not Confirmed Participats</span
+        >
+      </div>
+
+      <div class="text-center">
+        <h3
+          class="text-3xl sm:text-4xl lg:text-5xl font-semibold text-gray-800 dark:text-gray-200"
+        >
+          {{ notConfirmedParticipats.length }}
+        </h3>
+      </div>
+    </div>
+    <!-- End Card -->
+  </div>
+  <!-- End Grid -->
+  <table
+    class="min-w-full divide-y divide-gray-200 dark:divide-gray-700 bg-white dark:bg-slate-900 rounded-md shadow-md"
+  >
+    <thead class="bg-gray-200 dark:bg-slate-800 w-full font-semibold">
+      <tr>
+        <th scope="col" class="ps-6 py-3 text-start">
+          <label for="hs-at-with-checkboxes-main" class="flex">
+            <input
+              type="checkbox"
+              class="shrink-0 border-gray-300 rounded text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-600 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"
+              id="hs-at-with-checkboxes-main"
+            />
+            <span class="sr-only">Checkbox</span>
+          </label>
+        </th>
+
+        <th scope="col" class="ps-6 py-3 text-start">
+          <div class="flex items-center gap-x-2">
+            <span
+              class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200"
+            >
+              Full Name
+            </span>
+          </div>
+        </th>
+
+        <th scope="col" class="px-6 py-3 text-start">
+          <div class="flex items-center gap-x-2">
+            <span
+              class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200"
+            >
+              Email
+            </span>
+          </div>
+        </th>
+        <th scope="col" class="px-6 py-3 text-start">
+          <div class="flex items-center gap-x-2">
+            <span
+              class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200"
+            >
+              Phone
+            </span>
+          </div>
+        </th>
+        <th scope="col" class="px-6 py-3 text-start">
+          <div class="flex items-center gap-x-2">
+            <span
+              class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200"
+            >
+              isConfirmed
+            </span>
+          </div>
+        </th>
+      </tr>
+    </thead>
+
+    <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+      <tr *ngFor="let participant of allParticipats">
+        <td class="h-px w-px whitespace-nowrap">
+          <div class="ps-6 py-3">
+            <label for="hs-at-with-checkboxes-1" class="flex">
+              <input
+                type="checkbox"
+                class="shrink-0 border-gray-300 rounded text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-600 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"
+                id="hs-at-with-checkboxes-1"
+              />
+              <span class="sr-only">Checkbox</span>
+            </label>
+          </div>
+        </td>
+        <td class="h-px w-px whitespace-nowrap">
+          <div class="ps-6 lg:ps-3 xl:ps-0 pe-6 py-3">
+            <div class="flex items-center gap-x-3">
+              <div class="grow">
+                <span
+                  class="block text-sm font-semibold text-gray-800 dark:text-gray-200"
+                  >{{
+                    participant.firstName + " " + participant.lastName
+                  }}</span
+                >
+              </div>
+            </div>
+          </div>
+        </td>
+        <td class="h-px w-64 whitespace-nowrap">
+          <div class="px-6 py-3">
+            <span class="block text-sm text-gray-500 text-container">
+              {{ participant.email }}</span
+            >
+          </div>
+        </td>
+        <td class="h-px w-36 whitespace-nowrap">
+          <div class="px-6 py-3">
+            <span class="block text-sm text-gray-500 text-container">
+              {{ participant.phone }}</span
+            >
+          </div>
+        </td>
+        <td class="h-px w-px whitespace-nowrap">
+          <div class="px-6 py-3">
+            <span
+              *ngIf="participant.isConfirmed"
+              class="py-1 px-1.5 inline-flex items-center text-green-500 gap-x-1 text-xs font-medium"
+            >
+              YES
+            </span>
+            <span
+              *ngIf="!participant.isConfirmed"
+              class="py-1 px-1.5 inline-flex items-center text-red-500 gap-x-1 text-xs font-medium"
+            >
+              NO
+            </span>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<!-- End Card Section -->

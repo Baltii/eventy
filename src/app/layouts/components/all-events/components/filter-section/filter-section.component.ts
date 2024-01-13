@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { SharedService } from 'src/app/shared/services/shared.service';
 
@@ -10,7 +10,7 @@ import { SharedService } from 'src/app/shared/services/shared.service';
 export class FilterSectionComponent implements OnInit {
   constructor(private sharedService: SharedService) {}
   filterForm: any;
-  
+  @Output() data = new EventEmitter<any>();
 
   ngOnInit(): void {
     this.initForm();
@@ -42,6 +42,7 @@ export class FilterSectionComponent implements OnInit {
 
     this.sharedService.searchEvents(filter).subscribe((result) => {
       console.log(result);
+      this.data.emit(result);
     });
   }
 }

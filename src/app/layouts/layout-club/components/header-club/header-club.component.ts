@@ -21,5 +21,6 @@ export class HeaderClubComponent implements OnInit {
   }
   logout() {
     sessionStorage.clear();
+    this.router.navigate(['/authentication/signin']);
   }
 }
