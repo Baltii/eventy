@@ -12,9 +12,7 @@ export class ClubService {
     return this.http.get(BASE_URL + `events`);
   }
 
-  /*getTenEvents(): Observable<any> {
-    return this.http.get(BASE_URL + `events/ten`);
-  }*/
+  
   getEventImage(imageName: string): Observable<any> {
     return this.http.get(BASE_URL + `events/event/${imageName}`, {
       responseType: 'blob',

@@ -14,7 +14,6 @@ export class AllEventsComponent implements OnInit {
   ngOnInit(): void {
     this.clubService.getEvents().subscribe((events: any) => {
       for (let i = 0; i < events.length; i++) {
-        console.log(events[i]);
         const originalDate = events[i].date;
         const datePipe = new DatePipe('en-US');
         const formattedDate = datePipe.transform(
