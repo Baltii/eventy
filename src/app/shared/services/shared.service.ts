@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 const BASE_URL = 'http://localhost:3000/';
@@ -6,5 +6,10 @@ const BASE_URL = 'http://localhost:3000/';
   providedIn: 'root',
 })
 export class SharedService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
+  
+  searchEvents(filter: any): Observable<any> {
+    const params = new HttpParams({ fromObject: filter });
+    return this.http.get(BASE_URL + 'events/filterr', { params });
+  }
 }
